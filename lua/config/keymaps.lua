@@ -1,8 +1,6 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 
--- 让 S 在 visual 模式里可用
-vim.keymap.set("x", "S", require("nvim-surround").visual, { noremap = true, silent = true })
 
 -- Add any additional keymaps here
 local function python_run()
@@ -26,3 +24,13 @@ local function cpp_run()
 end
 
 vim.keymap.set("n", "<leader>rc", cpp_run, { desc = "Run C++ file" })
+
+-- 在调用前先确保插件已加载
+--local surround_ok, surround = pcall(require, "nvim-surround")
+--if surround_ok then
+  --vim.keymap.set("x", "S", surround.visual, { noremap = true, silent = true, desc = "Surround selection" })
+--else
+ -- vim.notify("nvim-surround not loaded!", vim.log.levels.WARN)
+--end
+-- 让 S 在 visual 模式里可用
+--vim.keymap.set("x", "S", require("nvim-surround").visual, { noremap = true, silent = true })

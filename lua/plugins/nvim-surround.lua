@@ -5,6 +5,10 @@ return {
     local surround = require("nvim-surround")
 
     surround.setup({
+    
+      keymaps = {
+        visual = "S", -- Visual 模式的 surround 快捷键
+      },
       surrounds = {
         -- 小括号 ()，去掉内部空格
         ["("] = { add = { "(", ")" } },
