@@ -25,6 +25,14 @@ end
 
 vim.keymap.set("n", "<leader>rc", cpp_run, { desc = "Run C++ file" })
 
+local function rust_run()
+  vim.cmd("silent! write")
+  local filename = '"'..vim.fn.expand("%:r")..'"'
+  vim.cmd("botright split | resize 30 | terminal cargo run")
+  vim.cmd("startinsert")
+end
+
+vim.keymap.set("n", "<leader>rr", cpp_run, { desc = "Run Rust file" })
 -- 在调用前先确保插件已加载
 --local surround_ok, surround = pcall(require, "nvim-surround")
 --if surround_ok then

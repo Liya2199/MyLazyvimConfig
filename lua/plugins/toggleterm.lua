@@ -6,7 +6,8 @@ return {
       require("toggleterm").setup({
         size = 20,
   start_in_insert = true,
-  open_mapping = [[<A-p>]],
+  --open_mapping = [[<A-p>]],
+  open_mapping = [[<leader>tt]],
   shell = ' "C:\\Program Files\\PowerShell\\7\\pwsh.exe" ',
   direction = 'float',
   hide_numbers = true,
