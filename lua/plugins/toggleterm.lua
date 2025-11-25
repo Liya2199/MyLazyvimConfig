@@ -19,6 +19,9 @@ return {
   close_on_exit = true,
   shade_terminals = true,
   winbar = 'Terminal',
+  keys = {
+      { "<Esc>", "<C-\\><C-n>", mode = "t", desc = "Exit terminal mode" },
+    },
       })
     end,
   }

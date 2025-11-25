@@ -32,7 +32,10 @@ local function rust_run()
   vim.cmd("startinsert")
 end
 
-vim.keymap.set("n", "<leader>rr", cpp_run, { desc = "Run Rust file" })
+vim.keymap.set("n", "<leader>rr", rust_run, { desc = "Run Rust file" })
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 -- 在调用前先确保插件已加载
 --local surround_ok, surround = pcall(require, "nvim-surround")
 --if surround_ok then

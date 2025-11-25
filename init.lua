@@ -8,3 +8,8 @@ require("plugins.nvim-surround")
 --require("plugins.codecompanion")
 require("plugins.mini-diff")
 require("plugins.render-markdown")
+
+require("plugins.file-manager")
+require("plugins.snacks")
+
+
