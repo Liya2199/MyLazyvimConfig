@@ -2,7 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-
 local function python_run()
   vim.cmd("silent! write")
   local filename = vim.fn.expand("%")
@@ -15,11 +14,10 @@ end
 -- 绑定 <leader>rp 快捷键
 vim.keymap.set("n", "<leader>rp", python_run, { desc = "Run Python file" })
 
-
 local function cpp_run()
   vim.cmd("silent! write")
-  local filename = '"'..vim.fn.expand("%:r")..'"'
-  vim.cmd("botright split | resize 30 | terminal g++ % -o "..filename..".exe && .\\"..filename..".exe")
+  local filename = '"' .. vim.fn.expand("%:r") .. '"'
+  vim.cmd("botright split | resize 30 | terminal g++ % -o " .. filename .. ".exe && .\\" .. filename .. ".exe")
   vim.cmd("startinsert")
 end
 
@@ -27,12 +25,32 @@ vim.keymap.set("n", "<leader>rc", cpp_run, { desc = "Run C++ file" })
 
 local function rust_run()
   vim.cmd("silent! write")
-  local filename = '"'..vim.fn.expand("%:r")..'"'
+  local filename = '"' .. vim.fn.expand("%:r") .. '"'
   vim.cmd("botright split | resize 30")
-  vim.cmd("terminal cargo run")  
+  vim.cmd("terminal cargo run")
   vim.cmd("startinsert")
 end
 
 vim.keymap.set("n", "<leader>rr", rust_run, { desc = "Run Rust file" })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- 使用Alt l 将注释移动到下一行末尾
+-- 将当前行的注释移动到下一行的行尾
+vim.keymap.set("n", "<A-l>", function()
+  local current_line = vim.api.nvim_get_current_line()
+
+  -- 简单的正则判断：如果当前行以注释符号开始（支持 lua, js, python 等常用符号）
+  if current_line:match("^%s*--") or current_line:match("^%s*//") or current_line:match("^%s*#") then
+    -- 1. 删除当前行
+    vim.cmd("normal! dd")
+    -- 2. 去到当前行（即原来的下一行）末尾，添加空格并粘贴
+    -- g_ 是移动到行尾非空字符，p 是粘贴
+    vim.cmd("normal! A " .. current_line:gsub("^%s+", ""))
+    -- 3. 清理一下可能多出来的换行符（由于 dd 带有换行）
+    vim.cmd("silent! s/\\n//g")
+  else
+    print("当前行似乎不是注释")
+  end
+end, { desc = "Move comment to end of next line" })
+
