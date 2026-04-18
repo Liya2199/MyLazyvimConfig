@@ -21,6 +21,8 @@ require("lazy").setup({
 
     -- 导入 fzf 扩展
     { import = "lazyvim.plugins.extras.editor.fzf" },
+    -- 导入两个插件，LazyVim 会根据 vim.g.lazyvim_picker 决定 <leader>f 系列归谁
+    -- { import = "lazyvim.plugins.extras.editor.telescope" },
     -- import/override with your plugins
     { import = "plugins" },
   },

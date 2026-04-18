@@ -54,3 +54,7 @@ vim.keymap.set("n", "<A-l>", function()
   end
 end, { desc = "Move comment to end of next line" })
 
+-- 如果你的默认 picker 是 fzf，那么可以手动给 telescope 留个后门
+-- vim.keymap.set("n", "<leader>tf", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find Files" })
+-- vim.keymap.set("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", { desc = "Telescope Live Grep" })
+-- vim.keymap.set("n", "<leader>tb", "<cmd>Telescope buffers<cr>", { desc = "Telescope Buffers" })

@@ -10,3 +10,23 @@ vim.g.lazyvim_picker = "fzf"
 -- 在 Windows 里，换行是 \r\n，而在 Unix/Linux 里只有 \n。
 -- 当 Neovim 识别不出这是 Windows 格式时，就会把多出来的 \r 显示成 ^M。
 vim.opt.fileformats = "unix,dos,mac"
+
+-- 软换行使用<leader> u w 开启，以下优化
+vim.opt.linebreak = true -- 在单词边界换行
+vim.opt.breakindent = true -- 换行后保持缩进
+-- 使用pwsh7而非cmd
+if vim.fn.has("win32") == 1 then
+  -- 确保sidekick能够正确打开，:term codex能够正常打开
+  vim.opt.shellcmdflag =
+    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+  vim.opt.shellredir = "2>&1 | Out-File -Encoding UTF8 %s"
+  vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s"
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
+  -- pwsh 7+ 支持,使用ps而非cmd
+  if vim.fn.executable("pwsh") == 1 then
+    vim.o.shell = "pwsh" -- 使用 PowerShell Core (7+)
+  else
+    vim.o.shell = "powershell" -- 使用 Windows 自带 PowerShell (5.1)
+  end
+end
