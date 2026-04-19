@@ -6,6 +6,9 @@
 vim.g.root_spec = { "cwd" }
 vim.g.lazyvim_picker = "fzf"
 
+-- 保持独立剪贴板，否则会有进程遗留，导致:qa无法完全关闭nvim进程
+vim.opt.clipboard = "" -- Lua不同步系统剪贴板，保持Neovim独立
+
 -- 防止出现使用Windows (CRLF) 的换行格式，而 Neovim 却以 Unix (LF) 格式在解析它。
 -- 在 Windows 里，换行是 \r\n，而在 Unix/Linux 里只有 \n。
 -- 当 Neovim 识别不出这是 Windows 格式时，就会把多出来的 \r 显示成 ^M。
