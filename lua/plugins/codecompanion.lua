@@ -2,6 +2,7 @@ return {
   {
     "olimorris/codecompanion.nvim",
     enable = false,
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -30,10 +31,9 @@ return {
       },
     },
     keys = {
-      -- { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", desc = "AI Chat" },
-      -- { "<leader>ac", "<cmd>CodeCompanion<cr>", desc = "AI Inline (Code)" },
-      -- { "ga", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Add to AI Chat" },
+      { "<leader>at", "<cmd>CodeCompanionChat Toggle<cr>", desc = "AI Chat" },
+      { "<leader>ay", "<cmd>CodeCompanion<cr>", desc = "AI Inline (Code)" },
+      { "ga", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Add to AI Chat" },
     },
   },
 }
-
