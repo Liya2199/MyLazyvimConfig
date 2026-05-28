@@ -4,8 +4,10 @@
 
 -- My config
 vim.g.root_spec = { "cwd" }
-vim.g.lazyvim_picker = "fzf"
-
+-- vim.g.lazyvim_picker = "fzf" --妈的，为啥fzf卡顿
+vim.g.lazy_did_setup = "telescope"
+-- 这会让所有由 Neovim 启动的 Node 进程（包括所有 LSP）都遵循这个内存限制
+vim.env.NODE_OPTIONS = "--max-old-space-size=1024" -- 防止Copilot language server占用过多内存
 -- 保持独立剪贴板，否则会有进程遗留，导致:qa无法完全关闭nvim进程
 vim.opt.clipboard = "" -- Lua不同步系统剪贴板，保持Neovim独立
 if vim.g.neovide or vim.g.nvy then
@@ -40,4 +42,14 @@ if vim.g.nvy then
   vim.o.guifont = "JetBrainsMono Nerd Font Mono:h14"
   -- 如果图标还是缺，再加一个符号回退字体
   -- vim.o.guifont = "JetBrainsMono Nerd Font Mono:h14:Symbols Nerd Font Mono:h14"
+end
+
+if vim.g.neovide then
+  -- 核心：设置支持 Nerd Font 的字体，图标才会正常显示
+  -- 语法：字体名:h字号 (#e-渲染选项)
+  vim.opt.guifont = "JetBrainsMono_Nerd_Font:h14"
+
+  -- 如果还是觉得图标小或模糊，可以微调以下参数（Neovide 特有）
+  vim.g.neovide_text_gamma = 0.8
+  vim.g.neovide_text_contrast = 0.1
 end
