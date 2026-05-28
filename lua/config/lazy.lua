@@ -23,6 +23,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.editor.fzf" },
     -- 导入两个插件，LazyVim 会根据 vim.g.lazyvim_picker 决定 <leader>f 系列归谁
     { import = "lazyvim.plugins.extras.editor.telescope" },
+    -- { import = "lazyvim.plugins.extras.ai.copilot-native" },
     -- import/override with your plugins
     { import = "plugins" },
   },
