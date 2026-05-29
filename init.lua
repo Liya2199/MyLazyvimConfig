@@ -8,6 +8,6 @@ require("plugins.mini-diff")
 -- require("plugins.fzf-lua")
 --require("sidekick").setup({ ... })
 if not vim.g.vscode then
-  require('sidekick').setup{}
+  require("sidekick").setup({})
 end
 --neovide
