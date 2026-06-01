@@ -4,8 +4,9 @@ return {
     -- 核心配置：如果 vim.g.neovide 为 true，则不加载此插件
     -- enabled = not vim.g.neovide,
     event = "VeryLazy",
+    -- 如果是neovide或者nvy都不需要启用
     cond = function()
-      return not vim.g.neovide
+      return not (vim.g.neovide or vim.g.nvy)
     end,
     opts = {
       -- 触发条件
