@@ -2,7 +2,8 @@ return {
   -- 1. 强行把这个不听话的插件彻底禁用（Disabled）
   {
     "mason-org/mason-lspconfig.nvim",
-    enabled = false, -- 🌟 核心：就是这一行，直接让它原地蒸发，启动时连加载都不会加载！
+    --enabled = false, -- 🌟 核心：就是这一行，直接让它原地蒸发，启动时连加载都不会加载！
+    enabled = true,
   },
 
   -- 2. 拦截并接管 nvim-lspconfig，防止它因为找不到 mason-lspconfig 而报错
@@ -19,6 +20,8 @@ return {
       servers = {
         -- 再次双重保险：给 copilot 彻底拉黑
         copilot = { enabled = false },
+        -- 保留 pyright，禁掉多余的 jedi（双 Python LSP 重复加载，首开文件卡顿）
+        jedi_language_server = { enabled = false },
       },
     },
   },

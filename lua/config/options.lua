@@ -5,7 +5,11 @@
 -- My config
 vim.g.root_spec = { "cwd" }
 -- vim.g.lazyvim_picker = "fzf" --妈的，为啥fzf卡顿
-vim.g.lazy_did_setup = "telescope"
+-- 【注】这行其实无效：LazyVim 加载时会把它无条件覆盖回 "auto"（见 lazyvim/config/options.lua）。
+-- 真正切换到 fzf 的方式：取消注释 lazy.lua 里的 { import = "lazyvim.plugins.extras.editor.fzf" }。
+-- 若真切换，fzf-lua.lua 里已做好懒加载 + ui.select 接管判断，不会再复现历史卡顿。
+-- vim.g.lazy_did_setup = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
 -- 这会让所有由 Neovim 启动的 Node 进程（包括所有 LSP）都遵循这个内存限制
 vim.env.NODE_OPTIONS = "--max-old-space-size=1024" -- 防止Copilot language server占用过多内存
 -- 保持独立剪贴板，否则会有进程遗留，导致:qa无法完全关闭nvim进程
@@ -16,6 +20,7 @@ end
 -- 防止出现使用Windows (CRLF) 的换行格式，而 Neovim 却以 Unix (LF) 格式在解析它。
 -- 在 Windows 里，换行是 \r\n，而在 Unix/Linux 里只有 \n。
 -- 当 Neovim 识别不出这是 Windows 格式时，就会把多出来的 \r 显示成 ^M。
+--  :set fileformats? 查看
 vim.opt.fileformats = "unix,dos,mac"
 
 -- 软换行使用<leader> u w 开启，以下优化

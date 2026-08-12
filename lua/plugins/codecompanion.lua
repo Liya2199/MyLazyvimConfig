@@ -8,25 +8,46 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
-      --adapters = {
-      -- 配置 DeepSeek 适配器
-      --deepseek = function()
-      -- return require("codecompanion.adapters").extend("deepseek", {
-      --  env = {
-      -- 推荐做法：在系统变量中设置 DEEPSEEK_API_KEY
-      --     api_key = os.getenv("DEEPSEEK_API_KEY"),
-      --api_key = function() return os.getenv("DEEPSEEK_API_KEY") end,
-      --   },
-
-      --  })
-      -- end,
+      -- opts = {
+      --   log_level = "TRACE",
       -- },
 
+      -- adapters = {
+      --   deepseek = function()
+      --     return require("codecompanion.adapters").extend("openai_compatible", {
+      --       name = "deepseek",
+      --       url = "https://api.deepseek.com/chat/completions",
+      --       env = {
+      --         api_key = os.getenv("DEEPSEEK_API_KEY"),
+      --       },
+      --       scheme = {
+      --         model = "schema.model.default",
+      --       },
+      --     })
+      --   end,
+      -- },
+      -- strategies = {
+      --   chat = { adapter = "deepseek" },
+      --   inline = { adapter = "deepseek" },
+      --   agent = { adapter = "deepseek" },
+      -- },
+      --
       -- 界面美化（依然配合你的 render-markdown）
       display = {
         chat = {
           render_distractions = false,
           --show_settings = true, -- 这样你能在窗口顶部看到 DeepSeek 已经在运行
+        },
+        action_palette = {
+          width = 95,
+          height = 10,
+          prompt = "Prompt",
+          provider = "default",
+          opts = {
+            show_preset_actions = true,
+            show_preset_prompts = true,
+            title = "CodeCompanion actions",
+          },
         },
       },
     },

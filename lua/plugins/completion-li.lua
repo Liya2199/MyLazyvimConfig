@@ -107,6 +107,7 @@ return {
 
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-g>"] = { "show_documentation", "hide_documentation", "fallback" },
 
         ["<Tab>"] = { "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "snippet_backward", "fallback" },
