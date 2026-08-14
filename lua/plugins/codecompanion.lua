@@ -120,7 +120,11 @@ return {
     keys = {
       { "<leader>at", "<cmd>CodeCompanionChat Toggle<cr>", desc = "AI Chat" },
       { "<leader>ay", "<cmd>CodeCompanion<cr>", desc = "AI Inline (Code)" },
+      -- visual 模式按 `:` 会自动预填 '\<,'>，RHS 不要再写 range，否则会变成双重范围报错；mode "v" 自动覆盖 v/V/^V 三种 visual
+      { "<leader>ay", ":CodeCompanion<CR>", mode = "v", desc = "AI Inline (Selection)" },
       { "ga", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Add to AI Chat" },
+      { "<leader>ak", "<cmd>CodeCompanionActions<cr>", desc = "AI Actions" },
+      { "<leader>ar", "<cmd>CodeCompanionCodeReview<cr>", desc = "AI Code Review" },
     },
   },
 }
