@@ -37,9 +37,9 @@ if vim.fn.has("win32") == 1 then
   vim.opt.shellxquote = ""
   -- pwsh 7+ 支持,使用ps而非cmd
   if vim.fn.executable("pwsh") == 1 then
-    vim.o.shell = "pwsh" -- 使用 PowerShell Core (7+)
+    vim.o.shell = "pwsh -NoProfile -NoLogo" -- 使用 PowerShell Core (7+)
   else
-    vim.o.shell = "powershell" -- 使用 Windows 自带 PowerShell (5.1)
+    vim.o.shell = "powershell -NoProfile -NoLogo" -- 使用 Windows 自带 PowerShell (5.1)
   end
 end
 
