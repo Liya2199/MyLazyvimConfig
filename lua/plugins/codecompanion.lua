@@ -27,7 +27,10 @@ return {
                 end,
                 -- 提取 reasoning_content：扁平 handler 用 (self, data) 调用，需包装成 deepseek parse_meta 期望的 { data = data }
                 parse_message_meta = function(self, data)
-                  return require("codecompanion.adapters.http.deepseek").handlers.response.parse_meta(self, { data = data })
+                  return require("codecompanion.adapters.http.deepseek").handlers.response.parse_meta(
+                    self,
+                    { data = data }
+                  )
                 end,
                 -- 解析 modelscope 响应头配额（扁平挂在 handlers 下；v20 起 http.openai 是 Responses 适配器，错误日志改用 openai_legacy）
                 on_exit = function(self, data)
@@ -95,17 +98,17 @@ return {
                     ["deepseek-ai/DeepSeek-V4.1-Flash-1017"] = {
                       formatted_name = "DeepSeek V4.1 Flash",
                       meta = { context_window = 131072 },
-                      opts = { can_reason = true, can_use_tools = true },
+                      opts = { can_reason = true, can_use_tools = true, has_vision = true },
                     },
                     ["Qwen/Qwen3.8-Flash-Next"] = {
                       formatted_name = "Qwen3.8 Flash Next",
                       meta = { context_window = 131072 },
-                      opts = { can_reason = true, can_use_tools = true },
+                      opts = { can_reason = true, can_use_tools = true, has_vision = true },
                     },
                     ["Qwen/Qwen3.8-27B"] = {
                       formatted_name = "Qwen3.8 27B",
                       meta = { context_window = 131072 },
-                      opts = { can_reason = true, can_use_tools = true },
+                      opts = { can_reason = true, can_use_tools = true, has_vision = true },
                     },
                   },
                 },
